@@ -1,0 +1,104 @@
+# 1 Exercise
+
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix foaf: <http://xmlns.com/foaf/spec/> .
+@prefix fam: <http://www.ifi.uio.no/IN3060/family#> .
+@prefix sim: <http://www.ifi.uio.no/IN3060/simpsons#> .
+
+# 2 Exercise
+
+sim:Homer a foaf:Person;
+foaf:name "Homer Simpson";
+foaf:age "36"^^xsd:int .
+
+sim:Marge a foaf:Person;
+foaf:name "Marge Simpson";
+foaf:age "34"^^xsd:int .
+
+sim:Lisa a foaf:Person;
+foaf:name "Lisa Simpson";
+foaf:age "8"^^xsd:int .
+
+sim:Bart a foaf:Person;
+foaf:name "Bart Simpson";
+foaf:age "10"^^xsd:int .
+
+sim:Maggie a foaf:Person;
+foaf:name "Maggie Simpson";
+foaf:age "1"^^xsd:int .
+
+# 3 Exercise
+
+sim:Simpsons a fam:Family;
+fam:hasFamilyMember sim:Homer, sim:Marge, sim:Lisa, sim:Bart, sim:Maggie .
+
+sim:Homer a foaf:Person;
+foaf:name "Homer Simpson";
+foaf:age "36"^^xsd:int;
+fam:hasSpouse sim:Marge .
+
+sim:Marge a foaf:Person;
+foaf:name "Marge Simpson";
+foaf:age "34"^^xsd:int;
+fam:hasSpouse sim:Homer .
+
+sim:Bart a foaf:Person;
+foaf:name "Bart Simpson";
+foaf:age "10"^^xsd:int;
+fam:hasFather sim:Homer;
+fam:hasMother sim:Marge .
+
+sim:Lisa a foaf:Person;
+foaf:name "Lisa Simpson";
+foaf:age "8"^^xsd:int;
+fam:hasFather sim:Homer;
+fam:hasMother sim:Marge .
+
+sim:Maggie a foaf:Person;
+foaf:name "Maggie Simpson";
+foaf:age "1"^^xsd:int;
+fam:hasFather sim:Homer;
+fam:hasMother sim:Marge .
+
+# 4 Exercise
+
+sim:Maggie a foaf:Person;
+foaf:name "Maggie Simpson";
+foaf:age "1"^^xsd:int;
+fam:hasFather sim:Homer;
+fam:hasMother sim:Marge;
+fam:hasParent [a foaf:Person;
+    fam:hasFather sim:Abraham];
+fam:hasParent [a foaf:Person;
+    fam:hasMother sim:Mona] .
+
+# 5 Exercise
+
+sim:Lisa a foaf:Person;
+foaf:name "Lisa Simpson";
+foaf:age "8"^^xsd:int;
+fam:hasFather sim:Homer;
+fam:hasMother sim:Marge;
+fam:hasParent [a foaf:Person;
+   fam:hasSister sim:Patty, sim:Selma];
+fam:hasParent [a foaf:Person;
+   fam:hasBrother sim:Herb] .
+
+sim:Patty a foaf:Person .
+
+sim:Selma a foaf:Person;
+fam:hasSister sim:Patty .
+
+sim:Herb a foaf:Person .
+
+# 6 Exercise
+
+sim:Marge a foaf:Person;
+foaf:name "Marge Simpson";
+foaf:age "34"^^xsd:int;
+fam:hasSpouse sim:Homer;
+fam:hasSpouse [a foaf:Person;
+   fam:hasFather sim:Abraham] .
+
+sim:Abraham a foaf:Person .
