@@ -1,0 +1,51 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix foaf: <http://xmlns.com/foaf/spec/> .
+@prefix fam: <http://www.ifi.uio.no/IN3060/family#> .
+@prefix sim: <http://www.ifi.uio.no/IN3060/simpsons#> .
+
+
+
+fam:Family rdf:type rdfs:Class .
+
+fam:hasFamilyMember rdf:type rdf:Property .
+
+fam:hasBrother rdfs:subPropertyOf fam:hasSibling ;
+  rdfs:range fam:Man .
+
+fam:hasSister rdfs:subPropertyOf fam:hasSibling ;
+  rdfs:range fam:Woman .
+
+fam:hasParent rdfs:subPropertyOf fam:isRelativeOf .
+
+fam:hasMother rdfs:subPropertyOf fam:hasParent ;
+  rdfs:range fam:Woman .
+
+fam:hasFather rdfs:subPropertyOf fam:hasParent ;
+  rdfs:range fam:Man .
+
+fam:hasSpouse rdfs:subPropertyOf fam:isRelativeOf .
+
+
+
+fam:Man rdfs:type rdfs:Class .
+
+fam:Gender rdf:type rdfs:Class .
+
+fam:Woman rdfs:type rdfs:Class .
+
+fam:hasGender rdf:type rdf:Property .
+
+fam:hasSibling rdfs:subPropertyOf fam:isRelativeOf .
+
+
+
+fam:Female rdf:type fam:Gender .
+
+fam:Male rdf:type fam:Gender .
+
+
+
+fam:isRelativeOf rdf:type rdf:Property ;
+  rdfs:domain foaf:Person ;
+  rdfs:range foaf:Person .
