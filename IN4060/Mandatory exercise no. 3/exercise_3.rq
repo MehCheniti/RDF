@@ -1,11 +1,11 @@
-PREFIX  xsd:  <http://www.w3.org/2001/XMLSchema#>
-PREFIX  fam:  <http://www.ifi.uio.no/IN3060/family#>
-PREFIX  rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-PREFIX  sim:  <http://www.ifi.uio.no/IN3060/simpsons#>
-PREFIX  foaf: <http://xmlns.com/foaf/spec/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX fam: <http://www.ifi.uio.no/IN3060/family#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX sim: <http://www.ifi.uio.no/IN3060/simpsons#>
+PREFIX foaf: <http://xmlns.com/foaf/spec/>
 
-SELECT  ?person
-WHERE
-  { ?person  foaf:name  ?name
-    FILTER regex(str(?name), "^M.+", "i")
-  }
+SELECT ?person
+WHERE {
+  ?p foaf:name ?person
+  FILTER regex(str(?person), "^M.+", "i")
+}
